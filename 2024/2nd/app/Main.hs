@@ -1,19 +1,32 @@
 import Data.List.Split
 
-filterIntList :: [Int] -> [Int]
-filterIntList [] = []
-filterIntList [_] = []
-filterIntList (x:y:xs) = (y - x) : filterIntList (y:xs)
+isSortedAsc :: (Ord a, Num a)=>[a] -> Bool
+isSortedAsc [] = True
+isSortedAsc [x] = True
+isSortedAsc (x:y:xs) = x<=y && (y-x)<=3 && (y-x)>=1 &&  isSortedAsc (y:xs)
 
-listBoolLength :: [Bool] -> Int
-listBoolLength = length . filter id
+isSortedDesc :: (Ord a, Num a) => [a] -> Bool
+isSortedDesc [] = True
+isSortedDesc [x] = True
+isSortedDesc (x:y:xs) = x>=y && (x-y) <= 3 && (x-y)>=1 && isSortedDesc (y:xs)
 
+removeOneElement :: Ord a => [a] -> [[a]]
+removeOneElement [] = []
+removeOneElement [x] = []
+removeOneElement (x:xs) = xs : [x : y | y <- removeOneElement xs] ++ [init (x:xs)]
 
-checkSafe :: [Int] -> Bool
-checkSafe xs
-    | all(\y -> (y >= 1 && y <= 3)) xs && all(>0) xs = True
-    | all(\y -> (y>=(-3) && y<=(-1))) xs && all(<0) xs = True
-    | otherwise =False
+makeSorted :: (Ord a, Num a) => [a] -> Bool
+makeSorted list
+  | isSortedAsc list = True
+  | isSortedDesc list = True
+  | otherwise = findSorted (removeOneElement list)
+
+findSorted :: (Ord a, Num a) => [[a]] -> Bool
+findSorted [] = False
+findSorted (x:xs)
+  | isSortedAsc x = True
+  | isSortedDesc x = True
+  | otherwise = findSorted xs
 
 main :: IO ()
 main = do
@@ -23,9 +36,7 @@ main = do
     -- convert file to list of Ints
     let listOfNums =[[read y :: Int | y<-splitOn " " x] | x<-splitOn "\n" contents, x /= ""]
 
-    -- calculetes difference between each of the numbers then checks if theyre in range 
-    let listOfSafe = [checkSafe (filterIntList  x) | x <- listOfNums]
-
-    -- get the lenght of the list of safe values
-    let numOfSafe = listBoolLength listOfSafe
-    print numOfSafe 
+    let diffs = [makeSorted x | x <- listOfNums]
+    let safeAnswer = [True | x <- diffs, x /= False]
+    let num = length safeAnswer
+    print num
