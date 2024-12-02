@@ -1,5 +1,5 @@
 
-
+#### task one
 with open("input.txt", "r") as file:
     contents =file.read().strip().split("\n")
 
@@ -45,6 +45,20 @@ def heap_sort(arr):
 heap_sort(left_list)
 heap_sort(right_list)
 
+##############task one end
+
+######### task 2
+
+#count all the numbers in the second list
+right_counter_dict = {x:len(list(filter(lambda y: y==x,right_list))) for x in right_list}
+
+sim_scores = [num*right_counter_dict[num] for num in left_list if num in right_counter_dict.keys()]
+
+
+##### task two end (just sum the sim_scores)
+
 with open("output.txt", "w") as file:
 
-    file.write(str(sum([abs(x-y) for x, y in zip(left_list, right_list)])))
+    file.write(f"answer one: {str(sum([abs(x-y) for x, y in zip(left_list, right_list)]))} \n")
+
+    file.write(f"\nanswer two: {sum(sim_scores)}\n")

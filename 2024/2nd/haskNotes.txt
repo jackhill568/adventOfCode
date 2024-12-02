@@ -1,0 +1,11 @@
+
+
+
+# runghc INTERPRETS INSTEAD OF COMPILING!!!!!
+
+
+# -Wall flag will allow compiler to output errors
+
+#ghci will give an interactive enviroment
+
+
