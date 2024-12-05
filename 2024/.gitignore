@@ -1,2 +1,6 @@
 */input.txt
 */test.txt
+*.cabal
+CHANGELOG.md
+LICENSE
+dist-newstyle
