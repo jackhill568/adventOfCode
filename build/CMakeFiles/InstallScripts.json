@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/home/ja/CompSci/adventOfCode/build/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

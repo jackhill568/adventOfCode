@@ -1,3 +1,0 @@
-/home/ja/CompSci/adventOfCode/build/CMakeFiles/aoc_2022_01_part1.dir
-/home/ja/CompSci/adventOfCode/build/CMakeFiles/edit_cache.dir
-/home/ja/CompSci/adventOfCode/build/CMakeFiles/rebuild_cache.dir

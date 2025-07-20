@@ -1,1 +1,0 @@
-/usr/bin/cc -Wl,--dependency-file=CMakeFiles/aoc_2022_01_part1.dir/link.d CMakeFiles/aoc_2022_01_part1.dir/2022/01/part1.c.o CMakeFiles/aoc_2022_01_part1.dir/src/util.c.o -o aoc_2022_01_part1
