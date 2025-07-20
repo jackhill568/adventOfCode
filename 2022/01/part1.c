@@ -32,34 +32,5 @@ void freeArray(Array *a) {
   a->used = a->size = 0;
 }
 int main() {
-  char *filename = "input.txt";
-  FILE *fp = fopen(filename, "r");
-
-  if (fp == NULL) {
-
-    printf("Error, could not open file\n");
-    return 1;
-  }
-  const unsigned MAX_LENGTH = 256u;
-  char buffer[MAX_LENGTH];
-
-  Array listOfCals;
-  initArray(&listOfCals, 1);
-  int pointer = 0;
-  long long int max = 0;
-
-  while (fgets(buffer, MAX_LENGTH, fp)) {
-    if (listOfCals.array[pointer] > max) {
-      max = listOfCals.array[pointer];
-    }
-    if (strcmp(buffer, "\n") != 0) {
-      listOfCals.array[pointer] = listOfCals.array[pointer] + atoi(buffer);
-    } else {
-      insertArray(&listOfCals, 0);
-      pointer += 1;
-    }
-  }
-  fclose(fp);
-  printf("the max calories is: %lld\n", max);
   return 0;
 }

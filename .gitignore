@@ -1,3 +1,4 @@
-*.txt
+input.txt
+test.txt
 *.out
 __pycache__/*
