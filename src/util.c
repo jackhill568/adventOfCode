@@ -21,3 +21,10 @@ char *read_file(const char *filename) {
   fclose(f);
   return buffer;
 }
+
+void print_string(char **array) {
+  int i = 0;
+  while (array[i] != NULL) {
+    printf("%s \n", array[i]);
+  }
+}
