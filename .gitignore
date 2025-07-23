@@ -3,3 +3,4 @@ test.txt
 build
 *.out
 __pycache__/*
+.cache
